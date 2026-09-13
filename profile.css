@@ -77,7 +77,6 @@ h3 { font-size: 17px; line-height: 1.5; font-weight: 650; }
 .profile-main > section + section { margin-top: 31px; }
 .profile-main > section > p { margin: 0 0 10px; }
 .profile-main > section > p:last-child { margin-bottom: 0; }
-.profile-main #about p { max-width: 78ch; }
 .entry-title { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
 .entry-title h3 { flex: 1 1 340px; }
 .entry-title strong { font-weight: 650; font-size: 17px; }

@@ -60,6 +60,7 @@
   "publications": [
     {
       "id": "publication-searchswarm",
+      "url": "https://arxiv.org/abs/2606.09730",
       "title": "SearchSwarm: Towards Delegation Intelligence in Agentic LLMs for Long-Horizon Deep Research",
       "authors": [
         {
@@ -106,6 +107,7 @@
     },
     {
       "id": "publication-foreseeing",
+      "url": "https://arxiv.org/abs/2512.04135",
       "title": "Decoding Large Language Diffusion Models with Foreseeing Movement",
       "authors": [
         {
@@ -133,6 +135,7 @@
     },
     {
       "id": "publication-safety",
+      "url": "https://arxiv.org/abs/2505.15710",
       "title": "Advancing LLM Safe Alignment with Safety Representation Ranking",
       "authors": [
         {

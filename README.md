@@ -11,7 +11,7 @@
 - `intro`：About 的段落，每个字符串是一段。
 - `news`：动态，`date` 为显示日期，`text` 为文字；可选 `target` 跳到论文、`url` 和 `linkLabel` 添加外部链接。
 - `education`：`institution`、`dates`、`degree`、`detail` 和可选 `additional`。
-- `publications`：`id`、`title`、`authors`、`venue`、`status`、`description`、`links`。作者格式为 `{ "name": "Quan Chen", "equal": true }`，`equal` 标记共同贡献。
+- `publications`：`id`、`title`、`url`、`authors`、`venue`、`status`、`description`、`links`。`url` 是标题点击后前往的论文页面（例如 arXiv），留空则显示为普通标题。作者格式为 `{ "name": "Quan Chen", "equal": true }`，`equal` 标记共同贡献。
 - `awards`：`title`、`detail`（可选）、`date`。
 - `service`：`title`、`organization`、`dates`、`description`；空描述不显示。
 - `projects`：`title`、`dates`、`description`、`label`、`url`；空链接不生成按钮。
