@@ -1,11 +1,20 @@
 import { readFile, mkdir, copyFile, writeFile, cp, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { profileView } from './profile-view.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const data = JSON.parse(await readFile(path.join(root, 'content.json'), 'utf8'));
 const output = path.join(root, 'dist');
+// Changed assets get a new URL so returning visitors cannot reuse stale CSS/JS.
+async function versionedAsset(file) {
+  const contents = await readFile(path.join(root, file));
+  const version = createHash('sha256').update(contents).digest('hex').slice(0, 12);
+  return `${file}?v=${version}`;
+}
+const stylesheet = await versionedAsset('profile.css');
+const script = await versionedAsset('app.js');
 const escape = (value = '') => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 function url(value) {
   const parsed = new URL(value);
@@ -23,8 +32,8 @@ const html = `<!doctype html>
   <link rel="canonical" href="${url(data.siteUrl)}">
   <link rel="icon" href="avatar.jpg">
   <script>try{const t=localStorage.getItem('quan-theme');document.documentElement.dataset.theme=t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{}</script>
-  <link rel="stylesheet" href="profile.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="${stylesheet}">
+  <script src="${script}" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
