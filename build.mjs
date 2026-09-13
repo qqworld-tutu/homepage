@@ -29,33 +29,28 @@ const html = `<!doctype html>
   ${data.siteUrl ? `<link rel="canonical" href="${url(data.siteUrl)}">` : ''}
   <link rel="icon" href="${escape(data.avatar)}">
   <script>try{const t=localStorage.getItem('quan-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./editorial.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar"><div class="topbar-inner">
-    <a class="wordmark" href="#about">${escape(data.name)}<span lang="zh">${escape(data.chineseName)}</span></a>
+    <a class="wordmark" href="#about" aria-label="Quan Chen, home"><span lang="zh">${escape(data.chineseName)}</span><span class="wordmark-caption">PERSONAL HOMEPAGE</span></a>
     <nav aria-label="Main navigation"><a class="current" href="#about" aria-current="page">Home</a><a href="${url(data.blog)}">Blog ${arrow}</a><a href="mailto:${escape(data.email)}">Contact</a></nav>
     <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme"><span aria-hidden="true">◐</span></button>
   </div></header>
   <div class="layout">
-    <aside class="sidebar" aria-label="Profile">
-      <img class="avatar" src="${escape(data.avatar)}" alt="${escape(data.name)}'s rabbit avatar" width="140" height="140">
-      <h1>${escape(data.name)} <span lang="zh">${escape(data.chineseName)}</span></h1>
-      <p class="role">${escape(data.role)}</p>
-      <p class="affiliation">${escape(data.affiliation)}</p>
-      <p class="location"><span aria-hidden="true">⌖</span> ${escape(data.location)}</p>
-      <div class="profile-links"><a href="mailto:${escape(data.email)}">Email ${arrow}</a><a href="${url(data.github)}">GitHub ${arrow}</a>${data.cv ? `<a href="${url(data.cv)}">CV ${arrow}</a>` : ''}</div>
-      <nav class="section-nav" aria-label="On this page">${sections.map(([id,label]) => `<a href="#${id}">${label}<span aria-hidden="true">→</span></a>`).join('')}</nav>
-      <a class="blog-note" href="${url(data.blog)}"><span class="eyebrow">Beyond the homepage</span><strong>Notes & little discoveries ${arrow}</strong><span>Visit QQ’s Blog</span></a>
-    </aside>
     <main id="main">
-      <section class="about-section" id="about"><p class="eyebrow">Mathematics · Computer Science</p><h2>Hello, I’m Quan<span class="accent">.</span></h2>${data.intro.map(p=>`<p>${escape(p)}</p>`).join('')}<div class="interests" aria-label="Research interests">${data.interests.map(t=>`<span>${escape(t)}</span>`).join('')}</div></section>
-      <section id="education"><div class="section-title"><h2>Education</h2><span>01</span></div>${entries(data.education)}</section>
+      <section class="about-section" id="about">
+        <div class="intro-heading"><p class="eyebrow">${escape(data.affiliation)} · ${escape(data.role)}</p><h1>${escape(data.name)}<span class="name-dot">.</span></h1><p class="study-line">Mathematics <em>&</em> Computer Science</p></div>
+        <figure class="portrait"><img class="avatar" src="${escape(data.avatar)}" alt="${escape(data.name)}'s rabbit avatar" width="180" height="180"><figcaption>${escape(data.location)}</figcaption></figure>
+        <div class="intro-copy">${data.intro.map(p=>`<p>${escape(p)}</p>`).join('')}<div class="profile-links"><a href="mailto:${escape(data.email)}">Email ${arrow}</a><a href="${url(data.github)}">GitHub ${arrow}</a>${data.cv ? `<a href="${url(data.cv)}">CV ${arrow}</a>` : ''}</div></div>
+        <nav class="section-nav" aria-label="On this page">${sections.filter(([id])=>id!=='about').map(([id,label]) => `<a href="#${id}">${label}</a>`).join('')}</nav>
+      </section>
+      <section id="education"><div class="section-title"><h2>Education</h2></div>${entries(data.education)}</section>
       ${data.experience.length ? `<section id="experience"><div class="section-title"><h2>Experience</h2></div>${entries(data.experience)}</section>` : ''}
       ${data.publications.length ? `<section id="publications"><div class="section-title"><h2>Publications</h2></div>${data.publications.map(p=>`<article class="entry"><h3>${escape(p.title)}</h3><p>${escape(p.authors)}</p><p class="muted">${escape(p.venue)}</p>${(p.links||[]).map(l=>`<a class="text-link" href="${url(l.url)}">${escape(l.label)} ${arrow}</a>`).join(' ')}</article>`).join('')}</section>` : ''}
-      ${data.projects.length ? `<section id="projects"><div class="section-title"><h2>Selected projects</h2><span>02</span></div>${data.projects.map(p=>`<a class="project" href="${url(p.url)}"><div><span class="eyebrow">${escape(p.label)}</span><h3>${escape(p.title)}</h3><p>${escape(p.description)}</p></div><span class="project-arrow" aria-hidden="true">↗</span></a>`).join('')}</section>` : ''}
+      ${data.projects.length ? `<section id="projects"><div class="section-title"><h2>Projects</h2></div>${data.projects.map(p=>`<a class="project" href="${url(p.url)}"><div><h3>${escape(p.title)} ${arrow}</h3><p>${escape(p.description)}</p><span class="eyebrow">${escape(p.label)}</span></div></a>`).join('')}</section>` : ''}
       ${data.writing.length ? `<section id="writing"><div class="section-title"><h2>From the blog</h2><a href="${url(data.blog)}">All writing ${arrow}</a></div><div class="writing-list">${data.writing.map(p=>`<a class="writing-row" href="${url(new URL(p.path, data.blog.endsWith('/') ? data.blog : data.blog + '/').href)}"><div><span class="eyebrow" lang="zh">${escape(p.category)}</span><h3 lang="zh">${escape(p.title)}</h3></div><span class="writing-date">${escape(p.date)} ${arrow}</span></a>`).join('')}</div></section>` : ''}
       <footer><span>© ${new Date().getFullYear()} ${escape(data.name)}</span><a href="mailto:${escape(data.email)}">${escape(data.email)} ${arrow}</a></footer>
     </main>
@@ -69,7 +64,7 @@ await mkdir(path.join(output, 'assets'), {recursive:true});
 await writeFile(path.join(output, 'index.html'), html);
 await writeFile(path.join(output, '.nojekyll'), '');
 if (data.siteUrl) await writeFile(path.join(output, 'CNAME'), new URL(data.siteUrl).hostname + '\n');
-await copyFile(path.join(root, 'styles.css'), path.join(output, 'styles.css'));
+await copyFile(path.join(root, 'editorial.css'), path.join(output, 'editorial.css'));
 await copyFile(path.join(root, 'app.js'), path.join(output, 'app.js'));
 await copyFile(path.join(root, data.avatar), path.join(output, data.avatar));
 // Keep links shared before the main domain became the academic homepage working.

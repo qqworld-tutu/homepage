@@ -20,7 +20,7 @@ npm run publish -- "Update academic homepage"
 
 ## 内容维护
 
-个人资料集中在 `content.json`，样式为 `styles.css`，页面生成器为 `build.mjs`。
+个人资料集中在 `content.json`，样式为 `editorial.css`，页面生成器为 `build.mjs`。
 
 - `intro`、`interests`、`education`：介绍、研究兴趣、教育经历。
 - `experience`：科研或实习经历，字段为 `title`、`dates`、`description`，可选 `url`。
