@@ -3,40 +3,230 @@
   "chineseName": "陈全",
   "role": "Undergraduate Student",
   "affiliation": "Peking University",
-  "location": "Beijing, China",
   "email": "chenquan@stu.pku.edu.cn",
   "github": "https://github.com/qqworld-tutu",
   "blog": "https://blog.chenquan-tutu.top/",
-  "siteUrl": "https://www.chenquan-tutu.top/",
-  "avatar": "assets/avatar.jpg",
+  "cv": "",
+  "scholar": "https://scholar.google.com/citations?user=Y-RsAcoAAAAJ&hl=en",
+  "wechatId": "dj7152",
   "intro": [
-    "I am an undergraduate at Peking University, studying Mathematics at the School of Mathematical Sciences and pursuing a double degree in Computer Science.",
-    "My research interests include trustworthy large language models and reasoning in large language models.",
-    "I keep course notes, small projects, and things I learn along the way on my blog. Outside of studying, I enjoy listening to JJ Lin."
+    "I am an undergraduate at Peking University, pursuing a dual degree in Mathematics and Computer Science. I expect to graduate in June 2027.",
+    "My research focuses on large language models, including agentic reasoning, reinforcement learning and post-training, safety alignment, and decoding for language diffusion models.",
+    "Outside research, I share course notes and small projects on my blog, and enjoy listening to JJ Lin."
   ],
-  "interests": ["Trustworthy LLMs", "LLM Reasoning", "Machine Learning"],
+  "news": [
+    {
+      "date": "Sep 2026",
+      "text": "1 paper accepted by EMNLP 2026.",
+      "target": "publication-foreseeing"
+    },
+    {
+      "date": "Jul 2026",
+      "datetime": "2026-07",
+      "text": "I joined Optiver as a quantitative trader intern."
+    },
+    {
+      "date": "Jun 2026",
+      "datetime": "2026-06",
+      "text": "We open-sourced SearchSwarm, a multi-agent framework for long-horizon deep research.",
+      "url": "https://github.com/Search-Swarm/SearchSwarm",
+      "linkLabel": "GitHub"
+    },
+    {
+      "date": "Dec 2025",
+      "datetime": "2025-12",
+      "text": "I joined the BaiLing Foundation Model Team at Ant Group as an LLM post-training research intern."
+    },
+    {
+      "date": "Jul 2025",
+      "text": "1 paper accepted by ICML 2025 Workshop on Models of Human Feedback for AI Alignment.",
+      "target": "publication-safety"
+    }
+  ],
   "education": [
     {
       "institution": "Peking University",
-      "dates": "2023 — Present",
-      "degree": "Undergraduate studies in Mathematics",
-      "detail": "School of Mathematical Sciences · Double degree in Computer Science"
+      "dates": "Sep 2023 – Jun 2027 (expected)",
+      "degree": "Dual degree in Computer Science",
+      "detail": "School of Mathematical Sciences"
+    },
+    {
+      "institution": "Shanghai High School",
+      "dates": "Sep 2020 – Jun 2023",
+      "degree": "High school",
+      "detail": ""
     }
   ],
-  "experience": [],
-  "publications": [],
+  "publications": [
+    {
+      "id": "publication-searchswarm",
+      "title": "SearchSwarm: Towards Delegation Intelligence in Agentic LLMs for Long-Horizon Deep Research",
+      "authors": [
+        {
+          "name": "Xiaochong Lan",
+          "equal": true
+        },
+        {
+          "name": "Quan Chen",
+          "equal": true
+        },
+        {
+          "name": "Kun Tao",
+          "equal": true
+        },
+        {
+          "name": "Xinyu Tang"
+        },
+        {
+          "name": "Tianshu Wang"
+        },
+        {
+          "name": "Qianggang Cao"
+        },
+        {
+          "name": "Xinyu Kong"
+        },
+        {
+          "name": "Zujie Wen"
+        },
+        {
+          "name": "Zhiqiang Zhang"
+        },
+        {
+          "name": "Jun Zhou"
+        },
+        {
+          "name": "Yong Li"
+        }
+      ],
+      "venue": "Submitted to EMNLP 2026; under review.",
+      "status": "under-review",
+      "description": "A multi-agent framework that uses sub-agents for active context management in long-horizon deep research, with supervised fine-tuning data for learning delegation.",
+      "links": []
+    },
+    {
+      "id": "publication-foreseeing",
+      "title": "Decoding Large Language Diffusion Models with Foreseeing Movement",
+      "authors": [
+        {
+          "name": "Yichuan Mo",
+          "equal": true
+        },
+        {
+          "name": "Quan Chen",
+          "equal": true
+        },
+        {
+          "name": "Mingjie Li"
+        },
+        {
+          "name": "Zeming Wei"
+        },
+        {
+          "name": "Yisen Wang"
+        }
+      ],
+      "venue": "EMNLP 2026.",
+      "status": "conference",
+      "description": "A search-based decoding method that combines local and global information for discrete optimization, with an accelerated variant that concentrates search on selected decoding steps.",
+      "links": []
+    },
+    {
+      "id": "publication-safety",
+      "title": "Advancing LLM Safe Alignment with Safety Representation Ranking",
+      "authors": [
+        {
+          "name": "Tianqi Du",
+          "equal": true
+        },
+        {
+          "name": "Zeming Wei",
+          "equal": true
+        },
+        {
+          "name": "Quan Chen",
+          "equal": true
+        },
+        {
+          "name": "Chenheng Zhang"
+        },
+        {
+          "name": "Yisen Wang"
+        }
+      ],
+      "venue": "ICML 2025 Workshop: Models of Human Feedback for AI Alignment.",
+      "status": "workshop",
+      "description": "A safety-alignment method that ranks candidate responses using intermediate Transformer representations and a lightweight similarity scorer.",
+      "links": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Exemplary Student Leader",
+      "detail": "Peking University",
+      "date": "2025"
+    },
+    {
+      "title": "National Scholarship",
+      "detail": "Peking University",
+      "date": "2024"
+    },
+    {
+      "title": "Outstanding Student",
+      "detail": "Peking University",
+      "date": "2024"
+    },
+    {
+      "title": "Silver Medal, 37th Chinese Mathematical Olympiad (CMO)",
+      "date": "2021"
+    },
+    {
+      "title": "First Prize, China Mathematical Olympiad, Shanghai Division",
+      "date": "2021, 2022"
+    },
+    {
+      "title": "First Prize, National Olympiad in Informatics in Provinces",
+      "detail": "Shanghai Senior High School Division",
+      "date": "2019"
+    }
+  ],
+  "service": [
+    {
+      "title": "President, Student Union",
+      "organization": "School of Mathematical Sciences, Peking University",
+      "dates": "Mar 2025 – Mar 2026",
+      "description": ""
+    },
+    {
+      "title": "Head of External Relations, Student Union",
+      "organization": "School of Mathematical Sciences, Peking University",
+      "dates": "Mar 2024 – Mar 2025",
+      "description": ""
+    }
+  ],
   "projects": [
     {
+      "title": "SearchSwarm",
+      "dates": "2026",
+      "description": "An open-source multi-agent framework for long-horizon deep research. Trains research agents to delegate subtasks and use compact, evidence-grounded reports for active context management.",
+      "label": "LLM agents · Deep research · Supervised fine-tuning",
+      "url": "https://github.com/Search-Swarm/SearchSwarm"
+    },
+    {
+      "title": "Deep Reinforcement Learning for Chinese Official Mahjong",
+      "dates": "Dec 2025 – Jan 2026",
+      "description": "Built an agent trained through behavior cloning and self-play PPO, with an asymmetric actor-critic model and IMPALA-style asynchronous training. Ranked 5th out of 28 teams in the final round of the Botzone competition.",
+      "label": "Reinforcement learning · Self-play · Multi-process training",
+      "url": "https://github.com/Cgfyufsygsm/Chinese-Standard-Mahjong"
+    },
+    {
       "title": "PKU Venue Booking",
+      "dates": "2025",
       "description": "Maintenance and updates to a campus venue-booking tool.",
       "label": "Python · Campus tools",
       "url": "https://github.com/qqworld-tutu/PKUautoBookingVenues-fixed-by-cq-tutu"
     }
   ],
-  "writing": [
-    {"title": "1.5–1.7 常返性、击中概率、格林函数", "category": "应用随机过程", "date": "Feb 2025", "path": "应用随机过程/1.5-1.7 常返性、击中概率、格林函数/"},
-    {"title": "1.3–1.4 状态的分类、首达时、强马氏性", "category": "应用随机过程", "date": "Feb 2025", "path": "应用随机过程/1.3-1.4 状态的分类、首达时、强马氏性/"},
-    {"title": "1.1–1.2 马氏链、不变分布、可逆分布", "category": "应用随机过程", "date": "Feb 2025", "path": "应用随机过程/1.1-1.2 马氏链、不变分布、可逆分布/"}
-  ],
-  "cv": ""
+  "siteUrl": "https://www.chenquan-tutu.top/",
+  "avatar": "assets/avatar.jpg"
 }

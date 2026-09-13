@@ -1,41 +1,52 @@
 # Quan Chen’s homepage
 
-独立学术主页。正式地址：https://www.chenquan-tutu.top/ 。博客在独立仓库 [qqworld-tutu/qqworld-tutu.github.io](https://github.com/qqworld-tutu/qqworld-tutu.github.io)，地址为 https://blog.chenquan-tutu.top/ 。
+学术主页：[www.chenquan-tutu.top](https://www.chenquan-tutu.top/)。博客独立部署于 [blog.chenquan-tutu.top](https://blog.chenquan-tutu.top/)，本仓库不修改博客主题和背景。
 
-只使用 Node.js 内置功能，不需要安装第三方依赖。建议使用 Node.js 22 或以上版本。
+只使用 Node.js 内置功能，无第三方构建依赖。推荐 Node.js 22 或以上。
 
-## 本地预览与发布
+## 修改文字
+
+正式站内容全部在 [content.json](./content.json)，不需要编辑 HTML。
+
+- `intro`：About 的段落，每个字符串是一段。
+- `news`：动态，`date` 为显示日期，`text` 为文字；可选 `target` 跳到论文、`url` 和 `linkLabel` 添加外部链接。
+- `education`：`institution`、`dates`、`degree`、`detail` 和可选 `additional`。
+- `publications`：`id`、`title`、`authors`、`venue`、`status`、`description`、`links`。作者格式为 `{ "name": "Quan Chen", "equal": true }`，`equal` 标记共同贡献。
+- `awards`：`title`、`detail`（可选）、`date`。
+- `service`：`title`、`organization`、`dates`、`description`；空描述不显示。
+- `projects`：`title`、`dates`、`description`、`label`、`url`；空链接不生成按钮。
+- `email`、`github`、`blog`、`scholar`、`wechatId`：左侧联系方式；Scholar、微信、`cv` 留空时不显示。
+- `siteUrl`、`avatar`：正式域名及仓库内头像路径，通常不需要修改。
+
+保留 JSON 的双引号、括号和逗号。空栏目自动隐藏。简历 PDF 和本地整理说明不随网站发布。
+
+## 本地预览
+
+运行 `node preview.mjs`，访问 http://127.0.0.1:4321 。
+
+修改 JSON 后，另开终端运行 `node build.mjs` 并刷新页面；或重启预览。可用 `PORT=4323 node preview.mjs` 指定端口。
+
+## 发布
+
+最简单的文字更新方式：在 GitHub 网页编辑本仓库的 `content.json` 并提交到 `main`，GitHub Actions 自动构建部署。提交到 `main` 会直接更新线上内容，需要先审稿时请创建分支或 Pull Request。
+
+本地编辑后可只提交本次修改：
 
 ```bash
-npm run preview
+node build.mjs
+git add content.json
+git commit -m "Update homepage content"
+git push origin main
 ```
 
-访问 http://127.0.0.1:4321 。修改文件后重启命令即可重新构建。`npm run build` 生成 `dist/`，该目录不提交到 Git。
+已有 `npm run publish -- "Update academic homepage"` 快捷命令会提交所有未忽略改动，使用前先检查 `git status`。
 
-```bash
-npm run publish -- "Update academic homepage"
-```
+`.github/workflows/pages.yml` 自动部署 GitHub Pages，自定义域名保持 `www.chenquan-tutu.top`。DNS 配置不由构建脚本修改。
 
-发布命令构建页面、提交全部未忽略改动，再推送 `main`。`.github/workflows/pages.yml` 自动构建并部署 GitHub Pages。仓库 Pages 发布来源应为 GitHub Actions，自定义域名为 `www.chenquan-tutu.top`。部署域名需要在 GitHub Pages 设置中绑定，仅生成 CNAME 文件不能代替该设置。
+## 实现与旧链接
 
-## 内容维护
+`profile-view.mjs` 生成双栏页面，`profile.css` 管理样式，`app.js` 提供主题切换、章节导航和微信提示。`build.mjs` 输出不提交到 Git 的 `dist/`。
 
-个人资料集中在 `content.json`，样式为 `editorial.css`，页面生成器为 `build.mjs`。
+`legacy-blog-paths.json` 保留旧博客路径，构建时生成跳转并保留查询参数和锚点，提供无 JavaScript 的 meta refresh 后备。`legacy-images/` 继续作为 `/images/` 发布。
 
-- `intro`、`interests`、`education`：介绍、研究兴趣、教育经历。
-- `experience`：科研或实习经历，字段为 `title`、`dates`、`description`，可选 `url`。
-- `publications`：论文，字段为 `title`、`authors`（字符串）、`venue`、`links`（含 `label` 和 `url` 的数组）。
-- `projects`、`writing`：项目和博客文章入口。
-- `cv`：公开 CV 的完整 HTTPS 链接；空字符串时隐藏。
-- `blog`：博客根地址，文章链接随其改变。
-- `siteUrl`：学术主页完整 HTTPS 地址，用于 canonical 和 CNAME。
-
-无内容的科研经历、论文和 CV 不显示。目前文字沿用已有公开介绍，个人内容后续再完善。
-
-## 博客旧链接兼容
-
-`legacy-blog-paths.json` 保存主域名原先的文章、分类等页面路径，构建时生成跳转页面，保留查询参数和页内锚点。GitHub Pages 不提供自定义服务端 301，因此这里使用浏览器跳转及无 JavaScript 的 meta refresh 后备。
-
-`legacy-images/` 是迁移时博客图片的兼容副本，构建后仍能从主域名 `/images/` 访问，以保留已分享的图片链接。后续博客的新图片继续由博客仓库维护。
-
-本项目独立编写，布局参考 imyangty.com 的信息组织方式，没有使用原 `academic-page` 仓库的模板或其示例资料。
+页面独立编写，布局参考 imyangty.com；未使用旧 academic-page 模板。当前版本为用户确认的 F 版。
